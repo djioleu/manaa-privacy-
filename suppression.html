@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suppression de compte — MA NAA MEDIA</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --violet: #6B21A8;
+      --or: #F5A623;
+      --fond: #0F0A1E;
+      --fond-carte: #1A1030;
+      --texte: #E5E7EB;
+      --texte-doux: #9CA3AF;
+      --bordure: rgba(255,255,255,0.08);
+      --erreur: #EF4444;
+      --succes: #22C55E;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--fond);
+      color: var(--texte);
+      line-height: 1.75;
+      padding: 0 16px 64px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1A1030 0%, #0F0A1E 100%);
+      border-bottom: 1px solid var(--bordure);
+      padding: 40px 0 32px;
+      text-align: center;
+      margin: 0 -16px 48px;
+    }
+
+    header .badge {
+      display: inline-block;
+      background: var(--erreur);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    header h1 {
+      font-size: clamp(20px, 5vw, 28px);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    header h1 span { color: var(--or); }
+
+    header p {
+      color: var(--texte-doux);
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .info-box {
+      background: rgba(239, 68, 68, 0.10);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      font-size: 14px;
+      color: #FCA5A5;
+      line-height: 1.6;
+    }
+
+    .info-box strong { color: #FEE2E2; }
+
+    .card {
+      background: var(--fond-carte);
+      border: 1px solid var(--bordure);
+      border-radius: 14px;
+      padding: 28px 28px 32px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--texte-doux);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 8px;
+    }
+
+    label span { color: var(--erreur); margin-left: 2px; }
+
+    input, select, textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--bordure);
+      border-radius: 8px;
+      color: var(--texte);
+      font-size: 15px;
+      font-family: inherit;
+      padding: 12px 14px;
+      margin-bottom: 22px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--or);
+    }
+
+    select option {
+      background: #1A1030;
+      color: var(--texte);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: rgba(255,255,255,0.25);
+    }
+
+    .field-group { margin-bottom: 4px; }
+
+    button[type="submit"] {
+      width: 100%;
+      background: var(--erreur);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 15px;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+      transition: opacity 0.2s, transform 0.1s;
+      margin-top: 8px;
+    }
+
+    button[type="submit"]:hover { opacity: 0.88; }
+    button[type="submit"]:active { transform: scale(0.98); }
+
+    .note {
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--texte-doux);
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .note a { color: var(--or); text-decoration: none; }
+    .note a:hover { text-decoration: underline; }
+
+    #confirmation {
+      display: none;
+      background: rgba(34, 197, 94, 0.10);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      border-radius: 10px;
+      padding: 24px;
+      text-align: center;
+      margin-top: 24px;
+    }
+
+    #confirmation h2 {
+      color: var(--succes);
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    #confirmation p {
+      color: #86EFAC;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--bordure);
+      text-align: center;
+      font-size: 13px;
+      color: var(--texte-doux);
+    }
+
+    footer a { color: var(--or); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Compte &amp; Données</div>
+  <h1>Supprimer mon <span>compte</span></h1>
+  <p>MA NAA MEDIA &nbsp;·&nbsp; Traitement sous 30 jours</p>
+</header>
+
+<div class="container">
+
+  <div class="info-box">
+    <strong>Ce formulaire supprime définitivement votre compte.</strong><br>
+    Toutes vos données personnelles (profil, commentaires, messages) seront effacées de nos serveurs dans un délai de <strong>30 jours</strong>. Cette action est irréversible.
+  </div>
+
+  <div class="card">
+    <form id="form-suppression" onsubmit="envoyerDemande(event)">
+
+      <div class="field-group">
+        <label for="email">Adresse e-mail du compte <span>*</span></label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="votre@email.com"
+          required
+          autocomplete="email"
+        />
+      </div>
+
+      <div class="field-group">
+        <label for="raison">Raison de la suppression <span>*</span></label>
+        <select id="raison" name="raison" required>
+          <option value="" disabled selected>Sélectionnez une raison…</option>
+          <option value="Je n'utilise plus l'application">Je n'utilise plus l'application</option>
+          <option value="Problèmes de confidentialité">Problèmes de confidentialité</option>
+          <option value="Contenu non pertinent pour moi">Contenu non pertinent pour moi</option>
+          <option value="Problèmes techniques récurrents">Problèmes techniques récurrents</option>
+          <option value="Création d'un nouveau compte">Création d'un nouveau compte</option>
+          <option value="Autre raison">Autre raison</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label for="commentaire">Commentaire <span style="color:var(--texte-doux);font-weight:400">(optionnel)</span></label>
+        <textarea
+          id="commentaire"
+          name="commentaire"
+          placeholder="Précisez si nécessaire…"
+        ></textarea>
+      </div>
+
+      <button type="submit">Envoyer la demande de suppression</button>
+    </form>
+
+    <div id="confirmation">
+      <h2>Demande envoyée</h2>
+      <p>Votre demande a été transmise à notre équipe.<br>Nous traitons votre demande sous <strong>30 jours</strong>.</p>
+    </div>
+
+    <p class="note">
+      Vous pouvez aussi nous contacter directement à<br>
+      <a href="mailto:brehmedjioleu@gmail.com">brehmedjioleu@gmail.com</a>
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  <p>
+    <a href="index.html">← Politique de confidentialité</a>
+    &nbsp;·&nbsp;
+    © 2026 MA NAA MEDIA · Bitsmakers
+  </p>
+</footer>
+
+<script>
+  function envoyerDemande(e) {
+    e.preventDefault();
+
+    const email      = document.getElementById('email').value.trim();
+    const raison     = document.getElementById('raison').value;
+    const commentaire = document.getElementById('commentaire').value.trim();
+
+    const sujet = encodeURIComponent('Demande de suppression de compte MA NAA MEDIA');
+
+    const corps = encodeURIComponent(
+      'Demande de suppression de compte\n' +
+      '==================================\n\n' +
+      'E-mail du compte : ' + email + '\n' +
+      'Raison           : ' + raison + '\n' +
+      'Commentaire      : ' + (commentaire || '(aucun)') + '\n\n' +
+      '--\nEnvoyé depuis manaa-privacy (formulaire web)'
+    );
+
+    window.location.href =
+      'mailto:brehmedjioleu@gmail.com?subject=' + sujet + '&body=' + corps;
+
+    // Affiche la confirmation après un court délai
+    setTimeout(function () {
+      document.getElementById('form-suppression').style.display = 'none';
+      document.getElementById('confirmation').style.display = 'block';
+    }, 800);
+  }
+</script>
+
+</body>
+</html>
